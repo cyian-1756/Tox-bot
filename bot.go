@@ -151,10 +151,6 @@ func main() {
                     t.FriendSendMessage(friendNumber, "Exiting")
                     os.Exit(1)
                 }
-            case "!check_python":
-                if checkPython3Install() == true {
-                    t.FriendSendMessage(friendNumber, "Python is installed")
-                }
             default:
                 if authed == true {
                     if len([]rune(message)) >= 6 && string(message[0:6]) == "!shell" {
