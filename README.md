@@ -27,3 +27,15 @@ A simple tox bot written in go
 !check_go_install | Checks if go is installed
 
 !check_mono_install | Checks if mono and mcs are installed
+
+## Compiling
+
+Compile with ./build.sh
+
+## Usage
+
+Run with `./bot`
+
+The bots ID will be printed to the terminal
+
+Add the bot by sending a tox friend request to the bot with the password in the message field (The default password is password)

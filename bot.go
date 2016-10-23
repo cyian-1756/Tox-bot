@@ -197,7 +197,7 @@ func main() {
                     } else if string(message) == "!check_go_install" {
                         message := fmt.Sprintf("go %v", checkGoInstall())
                         t.FriendSendMessage(friendNumber, message)
-                }
+                    }
                 fmt.Println(len([]rune(message)))
         }
     }, nil)
