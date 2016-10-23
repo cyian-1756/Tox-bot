@@ -30,6 +30,12 @@ A simple tox bot written in go
 
 ## Compiling
 
+Install github.com/kitech/go-toxcore and github.com/vova616/screenshot
+
+`go get github.com/kitech/go-toxcore`
+
+`go get github.com/vova616/screenshot`
+
 Compile with ./build.sh
 
 ## Usage
