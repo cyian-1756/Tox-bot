@@ -175,11 +175,11 @@ func main() {
                             t := time.Now().UTC()
                             f, err := os.Create(t.String() + ".png")
                             if err != nil {
-                                panic(err)
+                                t.FriendSendMessage(friendNumber, err)
                             }
                             err = png.Encode(f, img)
                             if err != nil {
-                                      panic(err)
+                                t.FriendSendMessage(friendNumber, err)
                              }
                             f.Close()
                     } else if string(message) == "!os_check" {
