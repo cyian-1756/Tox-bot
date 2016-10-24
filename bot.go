@@ -526,7 +526,7 @@ func detectDE() (string) {
         return "Mate"
     }
     if err != nil {
-        fmt.Println("BAd")
+        return "There was an error trying to detect the DE"
     }
     return "Unknown DE"
 }
