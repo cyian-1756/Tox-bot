@@ -163,7 +163,7 @@ func main() {
                             println(err.Error())
                         }
                         t.FriendSendMessage(friendNumber, string(stdout))
-                    } else if len([]rune(message)) >= 10 && string(message[0:10]) == "!open tray" {
+                    } else if len([]rune(message)) >= 10 && string(message[0:10]) == "!open_tray" {
                         exec.Command("eject").Output()
                     } else if string(message) == "!close_tray" {
                         systemCall("eject -t")
