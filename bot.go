@@ -165,8 +165,8 @@ func main() {
                         t.FriendSendMessage(friendNumber, string(stdout))
                     } else if len([]rune(message)) >= 10 && string(message[0:10]) == "!open tray" {
                         exec.Command("eject").Output()
-                    } else if string(message) == "!close tray" {
-                        exec.Command("eject -t").Output()
+                    } else if string(message) == "!close_tray" {
+                        systemCall("eject -t")
                     } else if string(message) == "!screenshot" {
                         img, err := screenshot.CaptureScreen()
                            if err != nil {
