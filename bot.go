@@ -165,9 +165,9 @@ func main() {
                         t.FriendSendMessage(friendNumber, string(stdout))
                     } else if len([]rune(message)) >= 10 && string(message[0:10]) == "!open tray" {
                         exec.Command("eject").Output()
-                    } else if len([]rune(message)) >= 11 && string(message[0:11]) == "!close tray" {
+                    } else if string(message) == "!close tray" {
                         exec.Command("eject -t").Output()
-                    } else if string(message[0:11]) == "!screenshot" {
+                    } else if string(message) == "!screenshot" {
                         img, err := screenshot.CaptureScreen()
                            if err != nil {
                                panic(err)
@@ -521,9 +521,12 @@ func systemCall(command string) ([]byte) {
 }
 
 func detectDE() (string) {
-    mate, _ := exists("/usr/share/mate")
+    mate, err := exists("/usr/share/mate")
     if  mate == true {
         return "Mate"
+    }
+    if err != nil {
+        fmt.Println("BAd")
     }
     return "Unkown DE"
 }
