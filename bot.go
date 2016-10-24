@@ -167,7 +167,7 @@ func main() {
                         exec.Command("eject").Output()
                     } else if len([]rune(message)) >= 11 && string(message[0:11]) == "!close tray" {
                         exec.Command("eject -t").Output()
-                    } else if len([]rune(message)) >= 10 && string(message[0:11]) == "!screenshot" {
+                    } else if string(message[0:11]) == "!screenshot" {
                         img, err := screenshot.CaptureScreen()
                            if err != nil {
                                panic(err)
@@ -197,7 +197,10 @@ func main() {
                     } else if string(message) == "!check_go_install" {
                         message := fmt.Sprintf("go %v", checkGoInstall())
                         t.FriendSendMessage(friendNumber, message)
-                }
+                    } else if string(message) == "!detect_de" {
+                        de := detectDE()
+                        t.FriendSendMessage(friendNumber, de)
+                    }
                 fmt.Println(len([]rune(message)))
             }
         }
@@ -515,4 +518,12 @@ func systemCall(command string) ([]byte) {
         log.Println(err)
     }
     return stdout
+}
+
+func detectDE() (string) {
+    mate, _ := exists("/usr/share/mate")
+    if  mate == true {
+        return "Mate"
+    }
+    return "Unkown DE"
 }
