@@ -14,9 +14,9 @@ A simple tox bot written in go
 
 !shell | runs command
 
-!open tray | Opens the CD tray
+!open_tray | Opens the CD tray
 
-!close tray | Closes the CD tray
+!close_tray | Closes the CD tray
 
 !screenshot | Takes screenshot
 
