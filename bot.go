@@ -528,5 +528,5 @@ func detectDE() (string) {
     if err != nil {
         fmt.Println("BAd")
     }
-    return "Unkown DE"
+    return "Unknown DE"
 }
