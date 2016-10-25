@@ -192,8 +192,6 @@ func main() {
                         message := fmt.Sprintf("Mono %v\nMCS %v", checkMonoInstall(), checkMonoCompilerInstall())
                         t.FriendSendMessage(friendNumber, message)
                     } else if string(message) == "!check_python_install" {
-                        message := fmt.Sprintf("python2 %v\npython3 %v", checkPython2Install(), checkPython3Install())
-                        t.FriendSendMessage(friendNumber, message)
                     } else if string(message) == "!check_go_install" {
                         message := fmt.Sprintf("go %v", checkGoInstall())
                         t.FriendSendMessage(friendNumber, message)
@@ -524,6 +522,10 @@ func detectDE() (string) {
     mate, err := exists("/usr/share/mate")
     if  mate == true {
         return "Mate"
+    }
+    cinnamon, err := exists("/usr/bin/cinnamon")
+    if cinnamon == true {
+        return "Cinnamon"
     }
     if err != nil {
         return "There was an error trying to detect the DE"
