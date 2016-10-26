@@ -28,6 +28,8 @@ A simple tox bot written in go
 
 !check_mono_install | Checks if mono and mcs are installed
 
+!detect_de | Detects the desktop environment on the end system 
+
 !get_running_dir | Gets the directory the bot is running from
 
 ## Compiling
