@@ -537,6 +537,10 @@ func detectDE() (string) {
     if cinnamon == true {
         return "Cinnamon"
     }
+    lxde, err := exists("/usr/bin/lxsession")
+    if lxde == true {
+        return "LXDE"
+    }
     if err != nil {
         return "There was an error trying to detect the DE"
     }
