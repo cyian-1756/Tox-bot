@@ -548,6 +548,14 @@ func checkBeefxssInstall() (bool) {
     return installed
 }
 
+func checkChkrootkitInstall() (bool) {
+    installed, err := exists("/usr/sbin/chkrootkit")
+    if err != nil {
+        return false
+    }
+    return installed
+}
+
 // func csCompile(code string) (bool) {
 //     if checkMonoCompilerInstall() == true {
 //         systemCall("mcs")
