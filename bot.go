@@ -554,7 +554,8 @@ func getRunningDir() (string) {
 func detectBrowsers() (string) {
     firefox, err := exists("/usr/bin/firefox")
     chromium, err := exists("/usr/bin/chromium-browser")
-    browsers := fmt.Sprintf("Firefox %v\nChromium %v", firefox, chromium)
+    iceweasel, err := exists("/usr/bin/iceweasel")
+    browsers := fmt.Sprintf("Firefox %v\nIceweasel %v\nChromium %v", firefox, iceweasel, chromium)
     if err != nil {
         return "Error in browser detection"
     }
