@@ -541,6 +541,10 @@ func detectDE() (string) {
     if lxde == true {
         return "LXDE"
     }
+    jwn, err := exists("/usr/bin/icewm-session")
+    if jwn == true {
+        return "JWN"
+    }
     if err != nil {
         return "There was an error trying to detect the DE"
     }
