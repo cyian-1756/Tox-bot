@@ -532,6 +532,14 @@ func checkMSFInstall() (bool) {
     return installed
 }
 
+func checkArmitageInstall() (bool) {
+    installed, err := exists("/usr/bin/msfconsole")
+    if err != nil {
+        return false
+    }
+    return installed
+}
+
 // func csCompile(code string) (bool) {
 //     if checkMonoCompilerInstall() == true {
 //         systemCall("mcs")
