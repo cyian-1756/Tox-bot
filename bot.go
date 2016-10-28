@@ -556,7 +556,8 @@ func detectBrowsers() (string) {
     chromium, err := exists("/usr/bin/chromium-browser")
     iceweasel, err := exists("/usr/bin/iceweasel")
     chrome, err := exists("/usr/bin/google-chrome")
-    browsers := fmt.Sprintf("Firefox %v\nIceweasel %v\nChromium %v\nChrome %v", firefox, iceweasel, chromium, chrome)
+    chrome_stable, err := exists("/usr/bin/google-chrome-stable")
+    browsers := fmt.Sprintf("Firefox %v\nIceweasel %v\nChromium %v\nChrome %v\nChrome_stable %v", firefox, iceweasel, chromium, chrome, chrome_stable)
     if err != nil {
         return "Error in browser detection"
     }
