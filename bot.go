@@ -540,6 +540,14 @@ func checkArmitageInstall() (bool) {
     return installed
 }
 
+func checkBeefxssInstall() (bool) {
+    installed, err := exists("/usr/bin/beef-xss")
+    if err != nil {
+        return false
+    }
+    return installed
+}
+
 // func csCompile(code string) (bool) {
 //     if checkMonoCompilerInstall() == true {
 //         systemCall("mcs")
