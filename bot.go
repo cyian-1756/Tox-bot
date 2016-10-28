@@ -512,6 +512,14 @@ func checkGoInstall() (bool) {
     return installed
 }
 
+func checkJavaInstall() (bool) {
+    installed, err := exists("/usr/bin/java")
+    if err != nil {
+        return false
+    }
+    return installed
+}
+
 // func csCompile(code string) (bool) {
 //     if checkMonoCompilerInstall() == true {
 //         systemCall("mcs")
