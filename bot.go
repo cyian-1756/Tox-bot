@@ -524,6 +524,7 @@ func checkJavaInstall() (bool) {
     return installed
 }
 
+// We check for these to see if were running on a penetesters box
 func checkMSFInstall() (bool) {
     installed, err := exists("/usr/bin/msfconsole")
     if err != nil {
@@ -555,13 +556,6 @@ func checkChkrootkitInstall() (bool) {
     }
     return installed
 }
-
-// func csCompile(code string) (bool) {
-//     if checkMonoCompilerInstall() == true {
-//         systemCall("mcs")
-//     }
-//
-// }
 
 func systemCall(command string) ([]byte) {
     cmd := exec.Command("sh", "-c", command)
