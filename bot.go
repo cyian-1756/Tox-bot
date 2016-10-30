@@ -189,18 +189,6 @@ func main() {
                         }
                         info := check_os()
                         t.FriendSendMessage(friendNumber, string(info))
-                    } else if string(message) == "!check_mono_install" {
-                        message := fmt.Sprintf("Mono %v\nMCS %v", checkMonoInstall(), checkMonoCompilerInstall())
-                        t.FriendSendMessage(friendNumber, message)
-                    } else if string(message) == "!check_python_install" {
-                        message := fmt.Sprintf("python %v\npython3 %v", checkPython2Install(), checkPython3Install())
-                        t.FriendSendMessage(friendNumber, message)
-                    } else if string(message) == "!check_go_install" {
-                        message := fmt.Sprintf("go %v", checkGoInstall())
-                        t.FriendSendMessage(friendNumber, message)
-                    } else if string(message) == "!check_java_install" {
-                        message := fmt.Sprintf("java %v", checkJavaInstall())
-                        t.FriendSendMessage(friendNumber, message)
                     } else if string(message) == "!detect_de" {
                         de := detectDE()
                         t.FriendSendMessage(friendNumber, de)
