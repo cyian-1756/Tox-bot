@@ -133,6 +133,7 @@ func main() {
         }
         var password = "password"
         switch message {
+            // TODO move everything that doesn't need an if else to the swtich case
             case "!" + password:
                 t.FriendSendMessage(friendNumber, "authed")
                 authed = true
@@ -201,6 +202,8 @@ func main() {
                         s := strings.Split(message, " ")
                         total_args := len(s)
                         program_name := s[1:total_args]
+                        // We use strings.Join here to convert the []string program_name to string
+                        // TODO find and use the proper way to convert a string
                         check := checkProgramInstall(strings.Join(program_name, ""))
                         t.FriendSendMessage(friendNumber, fmt.Sprintf("%s %v", program_name, check))
                     }
