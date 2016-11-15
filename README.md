@@ -30,6 +30,8 @@ A simple tox bot written in go
 
 ## Compiling
 
+Install tox-core with AV
+
 Install github.com/kitech/go-toxcore and github.com/vova616/screenshot
 
 `go get github.com/kitech/go-toxcore`
